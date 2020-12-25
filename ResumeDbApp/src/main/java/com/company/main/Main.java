@@ -6,7 +6,9 @@
 package com.company.main;
 
 import bean.Context;
+import bean.User;
 import dao.inter.UserDaoInter;
+import java.util.List;
 
 /**
  *
@@ -25,12 +27,10 @@ public class Main {
 //        daoImpl.insertUser(nUser);
 //        daoImpl.removeUser(2);
 
-//        List<User> users = daoImpl.getAllUser();
-//        for (User user : users) {
-//            System.out.println(user.toString());
-//        }
-
-        System.out.println(daoImpl.getAllUser());
+        List<User> users = daoImpl.getAllUser();
+        for (User user : users) {
+            System.out.println(user.toString());
+        }
 
     }
 

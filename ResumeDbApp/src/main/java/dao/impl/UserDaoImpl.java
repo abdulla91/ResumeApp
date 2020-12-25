@@ -27,20 +27,20 @@ public class UserDaoImpl extends AbstractConnectDao implements UserDaoInter {
         int id = rs.getInt("id");
         String name = rs.getString("name");
         String surname = rs.getString("surname");
-        String emil = rs.getString("email");
+        String email = rs.getString("email");
         String phone = rs.getString("phone");
         String profileDescription = rs.getString("profile_description");
         String address = rs.getString("address");
         Date birthdate = rs.getDate("birthdate");
-        int birthplaceId = rs.getInt("birthplace_id");
-        int nationalityId = rs.getInt("nationality_id");
-        String nationalityStr = rs.getString("nationality");
+        //int birthplaceId = rs.getInt("birthplace_id"); 
+        //int nationalityId = rs.getInt("nationality_id"); 
         String birthplaceStr = rs.getString("birthplace");
+        String nationalityStr = rs.getString("n.nationality");        
 
-        Country nationality = new Country(nationalityId, null, nationalityStr);
-        Country birthplace = new Country(birthplaceId, birthplaceStr, null);
+        Country birthplace = new Country(0, birthplaceStr, null);
+        Country nationality = new Country(0, null, nationalityStr);        
 
-        return new User(id, name, surname, emil, phone, profileDescription, address, birthdate, nationality, birthplace);
+        return new User(id, name, surname, email, phone, profileDescription, address, birthdate, nationality, birthplace);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class UserDaoImpl extends AbstractConnectDao implements UserDaoInter {
             Statement stm = c.createStatement();
             stm.execute("SELECT u.id, u.name, u.surname, u.email, u.phone, u.profile_description, u.address, u.birthdate, "
                     + "c.name as birthplace, n.nationality FROM user u "
-                    + "LEFT JOIN country n ON u.birthplace_id = n.id "
-                    + "LEFT JOIN country c ON u.nationality_id = c.id");
+                    + "LEFT JOIN country c ON u.birthplace_id = c.id "
+                    + "LEFT JOIN country n ON u.nationality_id = n.id");
 
             ResultSet rs = stm.getResultSet();
 
@@ -118,8 +118,8 @@ public class UserDaoImpl extends AbstractConnectDao implements UserDaoInter {
         try (Connection c = connect()) {
             PreparedStatement ps = c.prepareStatement("SELECT u.id, u.name, u.surname, u.email, u.phone, u.profile_description, u.address, u.birthdate, "
                     + "c.name as birthplace, n.nationality FROM user u "
-                    + "LEFT JOIN country n ON u.birthplace_id = n.id"
-                    + "LEFT JOIN country c ON u.nationality_id = c.id WHERE u.id = ?");
+                    + "LEFT JOIN country c ON u.birthplace_id = c.id"
+                    + "LEFT JOIN country n ON u.nationality_id = n.id WHERE u.id = ?");
             ps.setInt(1, userId);
             ps.execute();
 
