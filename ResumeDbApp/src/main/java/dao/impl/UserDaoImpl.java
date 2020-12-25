@@ -5,8 +5,8 @@
  */
 package dao.impl;
 
-import bean.Country;
-import bean.User;
+import entity.Country;
+import entity.User;
 import dao.inter.UserDaoInter;
 import java.sql.Connection;
 import java.sql.Date;

@@ -5,7 +5,7 @@
  */
 package dao.inter;
 
-import bean.User;
+import entity.User;
 import java.util.List;
 
 /**

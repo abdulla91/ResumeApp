@@ -5,8 +5,8 @@
  */
 package com.company.main;
 
-import bean.Context;
-import bean.User;
+import entity.Context;
+import entity.User;
 import dao.inter.UserDaoInter;
 import java.util.List;
 

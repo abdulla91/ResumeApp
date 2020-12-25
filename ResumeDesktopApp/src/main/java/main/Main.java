@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean;
-
-import dao.impl.UserDaoImpl;
-import dao.inter.UserDaoInter;
+package main;
 
 /**
  *
  * @author Abdulla.Maxsudov
  */
-public class Context {
-    
-    public static UserDaoInter instanceUserDao() {
-        return new UserDaoImpl();
-    }
+public class Main {
     
 }
