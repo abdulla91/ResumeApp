@@ -118,7 +118,7 @@ public class UserDaoImpl extends AbstractConnectDao implements UserDaoInter {
         try (Connection c = connect()) {
             PreparedStatement ps = c.prepareStatement("SELECT u.id, u.name, u.surname, u.email, u.phone, u.profile_description, u.address, u.birthdate, "
                     + "c.name as birthplace, n.nationality FROM user u "
-                    + "LEFT JOIN country c ON u.birthplace_id = c.id"
+                    + "LEFT JOIN country c ON u.birthplace_id = c.id "
                     + "LEFT JOIN country n ON u.nationality_id = n.id WHERE u.id = ?");
             ps.setInt(1, userId);
             ps.execute();

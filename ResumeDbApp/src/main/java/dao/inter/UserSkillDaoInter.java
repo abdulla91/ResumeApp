@@ -5,13 +5,13 @@
  */
 package dao.inter;
 
-import entity.EmploymentHistory;
+import entity.UserSkill;
 import java.util.List;
 
 /**
  *
- * @author Abdulla.Maxsudov
+ * @author HOME
  */
-public interface EmploymentHistoryDaoInter {
-    public List<EmploymentHistory> getAllUserEmploymentHistory();
+public interface UserSkillDaoInter {
+    public List<UserSkill> getUserSkill(int userId);
 }
